@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Query Result</title>
+</head>
+<body>
+    <h1>Query Result</h1>
+<!--    <p th:text="${result}" />-->
+<!--   <p th:text="${result}" />-->
+    <p th:if="${result instanceof T(java.lang.String)}" th:text="${result}"></p>
+<!--    <table th:if="${#lists.isEmpty(result)}">-->
+    <table th:if="${result instanceof T(java.util.List)}">
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user : ${result}">
+                <td th:text="${user.user_id}"></td>
+                <td th:text="${user.email}"></td>
+
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="/">Go back to Home Page</a>
+</body>
+</html>
